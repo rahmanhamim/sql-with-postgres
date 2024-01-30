@@ -1,4 +1,4 @@
--- Active: 1692158769276@@127.0.0.1@5432@university_management
+-- Active: 1706543500459@@127.0.0.1@5432@university_management@public
 -- ## CREATE DATABASE
 -- CREATE DATABASE DB1;
 
@@ -89,6 +89,26 @@ ALTER TABLE user1 RENAME COLUMN demo TO country;
 -- ADD CONSTRAINT unique_email UNIQUE (email);
 
 -- DELETE A CONSTRAINT
-ALTER TABLE user1 DROP CONSTRAINT unique_email;
+-- ALTER TABLE user1 DROP CONSTRAINT unique_email;
 
-SELECT * FROM "user1";
+-- Department Table
+-- Each department has many employees
+create table Department (
+    deptID SERIAL PRIMARY KEY, deptName VARCHAR(50) NOT NULL
+);
+
+insert into Department VALUES (1, 'IT');
+
+-- Employee Table
+-- Each employee belong to a department
+create table Employee (
+    empID SERIAL PRIMARY KEY, empName VARCHAR(50) NOT NULL, departmentID INT, CONSTRAINT fk_constraint_dept FOREIGN KEY (departmentID) REFERENCES Department (deptID)
+);
+
+insert into Employee VALUES (1, 'Hamim', 1);
+
+DELETE FROM Department WHERE deptID = 1;
+-- it will not work because of the foreign key constraint we need to delete the employee first.
+DELETE FROM Employee WHERE empID = 1;
+
+SELECT * FROM department;
