@@ -85,3 +85,30 @@ VALUES (
 SELECT * FROM employees ORDER BY empid ASC;
 
 SELECT * FROM employees ORDER BY name DESC LIMIT 2 OFFSET 1;
+
+-- GET highest salary
+-- SELECT * FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);
+SELECT * FROM employees ORDER BY salary DESC LIMIT 3 OFFSET 2;
+
+-- MORE SELECT QUERIES
+
+-- IN, NOT IN, BETWEEN, LIKE
+SELECT * FROM employees WHERE empid IN (1, 300, 5);
+
+SELECT * FROM employees WHERE empid NOT IN (1, 300, 5);
+
+SELECT * FROM employees WHERE salary BETWEEN 60000 AND 80000;
+
+-- LIKE
+SELECT * FROM employees WHERE name LIKE '%J%';
+
+SELECT * FROM employees WHERE name LIKE 'J%';
+
+SELECT * FROM employees WHERE name LIKE '%a';
+-- CASE SENSITIVE
+
+-- SPECIFIC position
+SELECT * FROM employees WHERE name LIKE '__a%';
+-- 2 underscore means 2 character before a
+SELECT * FROM employees WHERE name LIKE 'A%a';
+-- first character A and last character a in middle any character
