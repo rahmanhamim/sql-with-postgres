@@ -1,4 +1,4 @@
--- Active: 1706543500459@@127.0.0.1@5432@university_management@public
+-- Active: 1692158769276@@127.0.0.1@5432@university_management@public
 -- ## CREATE DATABASE
 -- CREATE DATABASE DB1;
 
@@ -111,7 +111,52 @@ DELETE FROM Department WHERE deptID = 1;
 -- it will not work because of the foreign key constraint we need to delete the employee first.
 DELETE FROM Employee WHERE empID = 1;
 
-SELECT * FROM department;
+-- ------------------------------------------------------------------------
+
+create table courses (
+    course_id SERIAL PRIMARY KEY, course_name VARCHAR(255) NOT NULL, description VARCHAR(255), published_date DATE
+)
+
+INSERT INTO
+    courses (
+        course_name, description, published_date
+    )
+VALUES (
+        'MongoDB', 'MongoDB for beginners', '2021-01-01'
+    ),
+    (
+        'NodeJS', 'NodeJS for beginners', '2021-01-01'
+    ),
+    (
+        'SQL', 'SQL for beginners', '2021-01-01'
+    );
+
+-- Update database table row
+-- Update table_name
+-- SET
+-- column1 = value1,
+-- column2 = value2,
+-- WHERE condition;
+
+update courses
+set
+    course_name = 'Test course',
+    description = 'test course description'
+where
+    course_id > 4;
+
+update courses
+set
+    course_name = 'Test course',
+    description = 'test course description'
+where
+    course_id > 1
+    OR course_id < 5;
+
+-- Delete database table row
+DELETE FROM courses WHERE course_id = 1;
+
+SELECT * FROM courses;
 
 -- task link
 -- https://github.com/Apollo-Level2-Web-Dev/postgresSQL-practice-task
