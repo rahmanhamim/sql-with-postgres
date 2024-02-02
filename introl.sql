@@ -112,3 +112,6 @@ DELETE FROM Department WHERE deptID = 1;
 DELETE FROM Employee WHERE empID = 1;
 
 SELECT * FROM department;
+
+-- task link
+-- https://github.com/Apollo-Level2-Web-Dev/postgresSQL-practice-task
